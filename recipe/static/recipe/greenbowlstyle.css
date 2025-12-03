@@ -1,0 +1,241 @@
+/* Text styling */
+/* Titles */
+@import url('https://fonts.google.com/specimen/Phudu');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&display=swap');
+
+/*Greenbowl theme: Blue variant*/
+:root {
+    --bg: #5b7553;
+    --tone: #adbc9f;
+    --text: #211f1f;
+    --text-cta: #fefdfa;
+    --cta: #12372a;
+    --contrast: #fbfada;
+   }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Phudu', sans-serif;
+    color: var(--text);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+
+
+/*Navbar styling*/
+.greenbowl-navbar {
+    background-color: var(--text-cta);
+    padding: 10px 24px;
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+/* Brand Section */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.brand-logo {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.brand-text {
+    font-family: 'Phudu', sans-serif;
+    font-size: 30px;
+    color: var(--text);
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+
+/*Links*/
+/* Default (normal) state */
+.nav-underline .nav-link {
+    color: var(--text);
+    position: relative;
+}
+
+/* Hover state */
+.nav-underline .nav-link:hover {
+    color: var(--bg);
+}
+
+/* Underline - normal state */
+.nav-underline .nav-link::after {
+    border-color: var(--text) !important;
+}
+
+/* Underline - hover state */
+.nav-underline .nav-link:hover::after {
+    border-color: var(--tone) !important;
+}
+
+/* Buttons*/
+.nav-form > .signup-btn {
+    margin-left: 10px;
+    margin-right: 8px;
+    background-color: var(--text-cta);
+    color: var(--text);
+    border: 2px solid var(--text);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.nav-form > .signup-btn:hover {
+    background-color: var(--tone);
+    border: 2px solid var(--tone);
+    color: var(--text-cta);
+}
+
+.nav-form > .login-btn {
+    background-color: var(--bg);
+    color: var(--contrast);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border-color: var(--bg);
+    font-weight: 500;
+}
+
+.nav-form > .login-btn:hover {
+    background-color: var(--cta);
+    color: var(--contrast);
+    border-color: var(--cta)
+}
+
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .nav-form, .container {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+}
+/*Landing Content Styling: Container*/
+.landing-content {
+    width: 100%;
+    height: 550px;
+    align-content: center;
+    background-image: url(images/landing-container-image.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: darken 20;
+  }
+.container > h1 {
+    color: var(--contrast);
+    padding-top: 250px;
+    padding: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#button-addon2,#button-addon3 {
+    border-color: var(--contrast);
+    color: var(--text-cta)
+}
+#button-addon2:hover, #button-addon3:hover {
+    background-color: var(--bg);
+}
+/*Collection styling*/
+.collection {
+    background-color: var(--cta)
+}
+.collection > h1 {
+    color: var(--contrast);
+    padding-top: 30px;
+}
+.container {
+    margin: 10px;
+    padding: 10px 20px;
+}
+.card {
+    background-color: var(--text-cta);
+}
+.row {
+    padding: 20px 15px;
+    margin: 30px;
+}
+.card-body > .btn-primary {
+    background-color: var(--bg);
+    color: var(--text-cta);
+    border-color: var(--bg);
+}
+.card-body > .btn-primary:hover {
+    background-color: var(--cta);
+    border-color: var(--cta);
+    color: var(--text-cta);
+}
+.card-body {
+    background-color: var(--text-cta);
+}
+/*Section 3: Frequently Asked Questions*/
+.faq {
+    background: var(--tone);
+    padding: 10px 10px;
+    border-top: none;
+}
+.accordion {
+    margin: 50px 100px;
+    padding: 10px 10px;
+}
+.faq > h1 {
+    padding-top: 30px;
+    color: var(--text);
+}
+.accordion-body {
+    text-align: left;
+}
+/*Footer styling*/
+
+  footer {
+    background-color: var(--cta);
+    color: var(--text-cta);
+    padding: 3rem 0;
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
+
+  footer a {
+    color: var(--text-cta);
+    text-decoration: none;
+    transition: 0.2s ease;
+  }
+
+  footer a:hover {
+    color: var(--tone);
+    opacity: .9;
+  }
+
+
+  .footer-logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: .8rem;
+    color: var(--contrast);
+    font-family: 'PhuDu', sans-serif;
+    font-weight: 700; 
+  }
+  
+
+  .footer-divider {
+    border-top: 1px solid var(--contrast);
+    margin: 2rem 0;
+    opacity: 0.7;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--cta-text);
+  }
+
+
+
+

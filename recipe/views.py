@@ -6,10 +6,15 @@ from .models import User, Ingridient, Recipe
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def index(request):
-    return HttpResponse("Hi bro!")
+    return render(request, "recipe/landingpage.html")
 def recipes(request):
     if(request.method == "POST"):
         if(request.POST.get("search") == 1):
+            recipe_list_inp = request.POST.get("list").split(",")
+            recipe_list = []
+            for in_id in recipe_list_inp:
+                recipe_list.append(Ingridient.objects.get(id=in_id))
+            
             pass
         else:
             pass
