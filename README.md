@@ -1,15 +1,16 @@
 # recipe
 Modify stuff inside but not anything inside {{}} or {%%} brackets
 For example if you have
-``` {%%}
+``` 
+{%%}
 <div> prime </div>
 // html code inside is modifable
-{%%} ```
+{%%}```
 
 {% anything inside like this is not modifable %}
 ```
 # admin
-access /admin and use username: ```bach``` and pass: ```123456``` to modify database
+access `/admin` and use username: ```bach``` and pass: ```123456``` to modify database
 # installation
 use ```pip install -r requirements.txt``` to install packages
 
