@@ -5,10 +5,13 @@
     <div class="landing-content">
       <div class="container text-center">
         <h1> What do you have today? </h1>
+        <form method="POST" action="{% url 'recipes' %}">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Type in your ingredients" aria-label="input" aria-describedby="button-addon2">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2">Suggest Recipes</button>
-        </div>
+            {% csrf_token %}
+             <input type="text" class="form-control" placeholder="Type in your ingredients" aria-label="input" aria-describedby="button-addon2" name="list">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Suggest Recipes</button>
+         </div>
+         </form>
       </div>
     </div>
     <!--Section 2: Explore our collection-->

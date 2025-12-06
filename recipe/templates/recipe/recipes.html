@@ -1,0 +1,9 @@
+{% extends 'recipe/layout.html' %}
+{% block body %}
+{% for recipe in recipes %}
+<div>
+<h1>{{recipe.name}}</h1>
+<button onclick="window.location = `{% url 'recipe' recipe.id %}`">See here</button>
+</div>
+{% endfor %}
+{% endblock %}

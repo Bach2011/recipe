@@ -3,27 +3,48 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from .models import User, Ingridient, Recipe
+from django.db.models import Count, Q
 from django.db import IntegrityError
+import markdown2
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def index(request):
     return render(request, "recipe/landingpage.html")
 def recipes(request):
     if(request.method == "POST"):
-        if(request.POST.get("search") == 1):
+        if(request.POST.get("list") != ""):
             recipe_list_inp = request.POST.get("list").split(",")
             recipe_list = []
             for in_id in recipe_list_inp:
-                recipe_list.append(Ingridient.objects.get(id=in_id))
-            
-            pass
+                recipe_list.append(Ingridient.objects.get(name=in_id))
+            recipes = (
+                Recipe.objects
+                .annotate(match_count=Count('ingridents', filter=Q(ingridents__name__in=recipe_list)))
+                .filter(match_count__gt=0)
+                .order_by('-match_count')
+            )
+            return render(request, "recipe/recipes.html", {
+                "recipes":recipes
+            })
         else:
-            pass
-        pass
+            return render(request, "recipe/recipes.html", {
+                "recipes":Recipe.objects.all()
+            })
     elif(request.method == "GET"):
-        pass
-def recipe(request):
-    pass
+        return render(request, "recipe/recipes.html", {
+            "recipes":Recipe.objects.all()
+        })
+def recipe(request, id):
+    cur_recipe = Recipe.objects.get(id=id)
+    if request.method == "POST":
+        user = request.user
+        user.saved.add(cur_recipe)
+        user.save()
+    saved = cur_recipe in request.user.saved.all()
+    return render(request, "recipe/recipe.html", {
+        "recipe" : cur_recipe,
+        "saved" : saved
+    })
 
 
 def login_view(request):

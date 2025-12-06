@@ -4,5 +4,10 @@
 <img src="{{recipe.picture}}">
 <h5>{{recipe.description}}</h5>
 <h6>{{recipe.instruction}}</h6>
-<p>Created by: <a href="{% url 'profile' recipe.created_by.id %}">{{recipe.created_by.username}}</a></p>
+{% if not saved %}
+<form action="{% url 'recipe' recipe.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Save this recipe</button>
+</form>
+{% endif %}
 {% endblock %}

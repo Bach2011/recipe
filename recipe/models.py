@@ -4,6 +4,8 @@ from django.contrib.auth.models import AbstractUser
 
 class Ingridient(models.Model):
     name = models.CharField()
+    def __str__(self):
+        return f'{self.name}'
 class Recipe(models.Model):
     name = models.CharField()
     picture = models.CharField(default = "")
