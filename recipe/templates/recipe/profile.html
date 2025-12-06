@@ -1,0 +1,11 @@
+{% extends 'recipe/layout.html' %}
+{% block body %}
+{% if not recipes %}<div>Nothing yet lil bro?</div>
+{% else %}
+{% for recipe in recipes %}
+<div>{{recipe.name}}</div><br>
+<p>{{recipe.description}}</p>
+<button onclick="window.location = `{% url 'recipe' recipe.id %}`">See here</button>
+{%  endfor %}
+{% endif %}
+{% endblock %}

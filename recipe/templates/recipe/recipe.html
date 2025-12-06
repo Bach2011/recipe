@@ -1,0 +1,8 @@
+{% extends 'recipe/layout.html' %}
+{% block body %}
+<h1>{{recipe.name}}</h1>
+<img src="{{recipe.picture}}">
+<h5>{{recipe.description}}</h5>
+<h6>{{recipe.instruction}}</h6>
+<p>Created by: <a href="{% url 'profile' recipe.created_by.id %}">{{recipe.created_by.username}}</a></p>
+{% endblock %}
