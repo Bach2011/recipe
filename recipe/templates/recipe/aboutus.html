@@ -1,0 +1,79 @@
+{% extends 'recipe/layout.html' %}
+{% block body %}
+    <!-- Page Content-->
+    <div class="aboutus">
+
+      <!-- Intro Section -->
+      <section class="about-section">
+        <h1 class="about-title">GreenBowl — From the pantry to delicious meals</h1>
+        <p class="about-text">
+          "GreenBowl — a project from us Pinky Bisexuals — helps turn your fridge into an inspiration for cooking.
+          Type in what you have, and we will suggest Vietnamese vegan recipes: diverse, environmentally-friendly, 
+          and easy to make at home. No need for professional chefs — a heart filled with passion for cooking is enough."
+        </p>
+      </section>
+    
+      <!-- Missions -->
+      <section class="about-section">
+        <h2>Our Missions</h2>
+        <ul class="about-list">
+          <li>Assist homecooks</li>
+          <li>Encourage home cooking, reducing food waste</li>
+          <li>Grow a community sharing creative vegan meals</li>
+        </ul>
+      </section>
+    
+      <!-- Values -->
+      <section class="about-section">
+        <h2>Values</h2>
+        <ul class="about-list">
+          <li>Approachable: accessible to all cooks</li>
+          <li>Fun: free to add your twists, with joy</li>
+          <li>Eco-friendly: encourage utilizing and minimizing scrap</li>
+          <li>Homemade: prioritize fresh ingredients, simple recipes</li>
+        </ul>
+      </section>
+    
+      <!-- Team -->
+      <section class="about-section">
+        <h2>Behind GreenBowl</h2>
+        <p class="about-text">
+          A small team of homecooks, content volunteers, and Pinky Bisexuals — 
+          all responsible for developing easy-to-make Vietnamese vegan recipes.
+        </p>
+      </section>
+    
+      <!-- Form -->
+      <section class="about-section join-section">
+        <h2>Join Us</h2>
+        <p>Have any recipes? You can send them here.</p>
+    
+        <form class="recipe-form">
+          <div class="mb-3">
+            <label class="form-label">Your Full Name</label>
+            <div class="row g-3">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+              </div>
+            </div>
+          </div>
+    
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-control" placeholder="name@example.com">
+          </div>
+    
+          <div class="mb-3">
+            <label for="recipe" class="form-label">Your Recipe:</label>
+            <textarea id="recipe" rows="4" class="form-control"></textarea>
+          </div>
+    
+          <button class="btn btn-primary about-submit" type="submit">Submit</button>
+        </form>
+      </section>
+    
+    </div>
+    {% endblock %}

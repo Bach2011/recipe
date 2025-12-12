@@ -1,13 +1,72 @@
 {% extends 'recipe/layout.html' %}
 {% block body %}
-<h1>{{recipe.name}}</h1>
-<img src="{{recipe.picture}}">
-<h5>{{recipe.description}}</h5>
-<h6>{{recipe.instruction}}</h6>
-{% if not saved %}
-<form action="{% url 'recipe' recipe.id %}" method="POST">
-    {% csrf_token %}
-    <button type="submit">Save this recipe</button>
-</form>
-{% endif %}
+<div class="recipe-post">
+      <!--Section: Basic Info-->
+      <div class="recipe-nav">
+        <a class="icon-link icon-link-hover" href="{% url 'collection' %}">
+          Back to Collection
+          <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+          </svg>
+        </a>
+      </div>
+      <div class="container-fluid recipe-intro text-center">
+        <h1 class="post-title">{{recipe.name}}</h1>
+        <p><i>By <strong>Pinky Bisexuals</strong></i></p>
+        <img class="post-img" src="{{recipe.picture}}" alt="Overview picture of the dish"
+        width="100%">
+        <p><i>Courtesy of lifewithoutmeat.com</i></p>
+      </div>
+      <!--Section: Post content-->
+      <div class="post-content">
+        <div class="row">
+          <div class="col-4 p-3">
+            <h4>Content</h4>
+            <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+              <nav class="nav nav-pills flex-column">
+                <a class="nav-link" href="#overview">Overview</a>
+                <a class="nav-link" href="#ingredients">Ingredients</a>
+                <a class="nav-link" href="#instructions">Instructions</a>
+              </nav>
+            </nav>
+            <div class="saved-recipe pt-5">
+                {% if not saved %}
+                <form action="{% url 'recipe' recipe.id}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Like this recipe</button>
+                </form>
+                {% endif %}
+            </div>
+          
+          </div>
+        
+          <div class="col-8">
+            <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+              <div id="overview">
+                <h4>Overview</h4>
+                <p>{{recipe.description}}</p>
+              </div>
+              <div class="section-divider"></div>
+              <div id="ingredients">
+                <h4>Ingredients</h4>
+                <ul>
+                  {% for i in ingredients %}
+                  <li>{{i.name}}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="section-divider"></div>
+              <div id="instructions">
+                <h4>Instructions</h4>
+                <ol>
+                    {{recipe.instruction}}
+                </ol>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
 {% endblock %}

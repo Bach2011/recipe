@@ -1,12 +1,40 @@
 {% extends 'recipe/layout.html' %}
 {% block body %}
-{% if not recipes %}<div>Nothing yet lil bro?</div>
-{% else %}
-{% for recipe in recipes %}
-<div>{{recipe.name}}</div><br>
-<p>{{recipe.description}}</p>
-<p>{{recipe.instruction}}</p>
-<button onclick="window.location = `{% url 'recipe' recipe.id %}`">See here</button>
-{%  endfor %}
-{% endif %}
+<div class="container profile-page my-5">
+
+            <h1 class="page-title mb-4">Your Profile</h1>
+            <h3>Welcome Back, Your Name!</h3>
+
+            <!-- User Header -->
+            <div class="profile-header d-flex align-items-center gap-4 mb-5">
+                <img src="https://avatar.iran.liara.run/public" 
+                    alt="User Avatar" 
+                    class="avatar-img">
+                <div class="user-info">
+                    <h6 class="username">{{user.username}}</h6>
+                    <p>{{user.email}}</p>
+                </div>
+            </div>
+
+            <!-- Saved Recipes Section -->
+            <section class="saved-recipes-section mb-5">
+                <h3 class="section-title">Saved Recipes</h3>
+
+                <div class="saved-recipes-card p-4">
+                    {% if not recipes %}
+                    <p class="empty-message">You haven't saved any recipes yet.</p>
+                    <a href="{% url 'collection' %}" class="btn browse-btn mb-3">Start Browsing</a>
+                    {% else %}
+                    <div class="list-group saved-recipe-list">
+                        {% for recipe in recipes %}
+                        <a href="recipe-post.html" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                {{recipe.name}}
+                                <small>3 days ago</small>
+                            </div>
+                        </a>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            </section>
 {% endblock %}

@@ -2,6 +2,7 @@
 {% block title %} Landing page {% endblock %}
 {% block body %}
     <!--Section 1: Landing Section-->
+    {% if message %}<script> alert("{{message}}");</script>{%endif%}
     <div class="landing-content">
       <div class="container text-center">
         <h1> What do you have today? </h1>

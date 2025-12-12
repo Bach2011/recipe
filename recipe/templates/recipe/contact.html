@@ -1,0 +1,62 @@
+{% extends 'recipe/layout.html' %}
+{% block title %}Contact page{% endblock %}
+
+{% block body %}
+    <body>
+        <div class="contact-wrapper container">
+
+            <section class="contact-header">
+              <h1>Contact Us</h1>
+              <p>We’re always here to help! Reach out to us through any platform below.</p>
+            </section>
+          
+            <!-- Contact List -->
+            <ul class="contact-list">
+                <li>Email: greenbowl@gmail.com</li>
+                <li>Phone Number: 012-345-678</li>
+            
+                <li class="social-row">
+                    <a href="https://x.com/" target="_blank">Twitter</a>
+                    <a href="facebook.com">Facebook</a>
+                    <a href="instagram.com">Instagram</a>
+                    <a href="tiktok.com">TikTok</a>
+                </li>
+            </ul>
+            
+          
+            <!-- Contact Form -->
+            <section class="contact-form-section">
+              <h2>Send Us a Message</h2>
+              <form class="contact-form">
+                <div class="mb-3">
+                  <label class="form-label">Name</label>
+                  <input type="text" class="form-control" placeholder="Oliver Bearman">
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label">Phone Number</label>
+                  <input type="text" class="form-control" placeholder="123-456-789">
+                </div>
+          
+                <div class="mb-3">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-control" placeholder="greenbowl@example.com">
+                </div>
+          
+                <div class="mb-3">
+                  <label class="form-label">Subject</label>
+                  <input type="text" class="form-control">
+                </div>
+          
+                <div class="mb-3">
+                  <label class="form-label">Description</label>
+                  <textarea rows="4" class="form-control"></textarea>
+                </div>
+          
+                <button type="submit" class="btn btn-primary contact-submit">Submit</button>
+              </form>
+          
+            </section>
+          
+        </div>
+{% endblock %}

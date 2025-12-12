@@ -16,7 +16,11 @@ def recipes(request):
             recipe_list_inp = request.POST.get("list").split(",")
             recipe_list = []
             for in_id in recipe_list_inp:
-                recipe_list.append(Ingridient.objects.get(name=in_id))
+                try:
+                    new = Ingridient.objects.get(name=in_id)
+                    recipe_list.append(new)
+                except Ingridient.DoesNotExist:
+                    return render(request, 'recipe/landingpage.html', {"message":f'Ingredient {in_id} not found in database'})
             recipes = (
                 Recipe.objects
                 .annotate(match_count=Count('ingridents', filter=Q(ingridents__name__in=recipe_list)))
@@ -43,6 +47,7 @@ def recipe(request, id):
     saved = cur_recipe in request.user.saved.all()
     return render(request, "recipe/recipe.html", {
         "recipe" : cur_recipe,
+        "ingredients":cur_recipe.ingridents.all(),
         "saved" : saved
     })
 
@@ -98,3 +103,37 @@ def register(request):
 def profile(request, id):
     recipe_saved = User.objects.get(id=id).saved.all()
     return render(request, "recipe/profile.html", {"recipes":recipe_saved})
+def contact(request):
+    return render(request, "recipe/contact.html")
+def aboutus(request):
+    return render(request, "recipe/aboutus.html")
+def collection(request):
+    if request.method == "POST":
+        search = request.POST.get('search')
+        try:
+            rec = Recipe.objects.get(name=search)
+            return HttpResponseRedirect(reverse("recipe", args=[rec.id]))
+        except Recipe.DoesNotExist:
+            return render(request, "recipe/collection.html", {"message":"Recipe does not exist"})
+    else:
+        lines = [[]]
+        cnt = 0;
+        for recipe in Recipe.objects.all():
+            if cnt == len(lines):        # create a new sublist when needed
+                lines.append([])
+
+            if len(lines[cnt]) < 3:
+                lines[cnt].append(recipe)
+            else:
+                cnt += 1
+                lines.append([recipe])
+        top = []
+        count = 0
+        for recipe in Recipe.objects.all():
+            top.append(recipe)
+            count+=1
+            if(count >= 3): break
+        return render(request, "recipe/collection.html", {
+            "lines": lines,
+            "top":top
+        })
