@@ -1,24 +1,41 @@
-{% extends "recipe/layout.html" %}
-
+{% extends 'recipe/layout.html' %}
 {% block body %}
+<!--Page Content-->
+        <h1 class="auth-title">Welcome Back</h1>
 
-    <h2>Login</h2>
+        <div class="auth-page">
+            <form action="http://localhost:3000/login" method="POST">
 
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="inputEmail" name="email">
+                </div>
 
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+                <div class="mb-3">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="inputPassword" name="password">
+                </div>
+                <div class="row m-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                          Reveal password
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                          Remember me
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="auth-btn-primary">Sign In</button>
+
+                <div class="auth-link-box">
+                    <h3>New here?</h3>
+                    <a href="{% url 'register' %}" class="auth-btn-secondary btn">Create Account</a>
+                </div>
+
+            </form>
         </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Login">
-    </form>
-
-    Don't have an account? <a href="{% url 'register' %}">Register here.</a>
-
 {% endblock %}

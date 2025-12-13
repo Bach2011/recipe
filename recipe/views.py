@@ -91,12 +91,6 @@ def register(request):
 
         # Ensure password matches confirmation
         password = request.POST.get("password")
-        confirmation = request.POST.get("confirmation")
-        if password != confirmation:
-            return render(request, "recipe/register.html", {
-                "message": "Passwords must match."
-            })
-
         # Attempt to create new user
         try:
             user = User.objects.create_user(username, email, password)
