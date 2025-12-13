@@ -4,7 +4,7 @@
         <h1 class="auth-title">Welcome Back</h1>
 
         <div class="auth-page">
-            <form action="http://localhost:3000/login" method="POST">
+            <form action="{% url 'login' %}" method="POST">
 
                 <div class="mb-3">
                     <label for="inputEmail" class="form-label">Email Address</label>
