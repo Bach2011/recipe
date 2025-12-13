@@ -11,7 +11,7 @@ class Recipe(models.Model):
     picture = models.ImageField(upload_to="products/")
     ingridents = models.ManyToManyField(Ingridient, related_name="food")
     description = models.CharField(default = "")
-    instruction = models.CharField(default = "")
+    instruction = models.TextField(default = "")
 class User(AbstractUser, models.Model):
     def __str__(self):
         return f'{self.username}'
