@@ -28,7 +28,7 @@
                     {% else %}
                     <div class="list-group saved-recipe-list">
                         {% for recipe in recipes %}
-                        <a href="recipe-post.html" class="list-group-item list-group-item-action">
+                        <a href="{% url 'recipe' recipe.id %}" class="list-group-item list-group-item-action">
                             <div class="d-flex w-100 justify-content-between">
                                 {{recipe.name}}
                                 <small>3 days ago</small>
