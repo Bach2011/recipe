@@ -8,7 +8,7 @@ class Ingridient(models.Model):
         return f'{self.name}'
 class Recipe(models.Model):
     name = models.CharField()
-    picture = models.CharField(default = "")
+    picture = models.ImageField(upload_to="products/")
     ingridents = models.ManyToManyField(Ingridient, related_name="food")
     description = models.CharField(default = "")
     instruction = models.CharField(default = "")

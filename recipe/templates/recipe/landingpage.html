@@ -20,39 +20,18 @@
       <h1>Explore our collection</h1>
       <div class="container text-center">
         <div class="row">
+          {% for recipe in recipes %}
           <div class="col">
             <div class="card">
-              <img src="images/veganfood.jpg" class="card-img-top" alt="yummy vegan food">
-            
+              <img src="{{recipe.picture.url}}" class="card-img-top" alt="yummy vegan food">
               <div class="card-body">
-                <h5 class="card-title">Gemuese Sandwich</h5>
-                <p class="card-text">This is a very healthy vegan food. Ingredients mostly originate from the West, even though we pretend it's authentic Vietnamese dish</p>
-                <a href="green bowl prj/collection.html" class="btn btn-primary">See More</a>
+                <h5 class="card-title">{{recipe.name}}</h5>
+                <p class="card-text">{{recipe.description}}</p>
+                <a href="{% url 'recipe' recipe.id %}" class="btn btn-primary">See More</a>
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card">
-              <img src="images/veganfood.jpg" class="card-img-top" alt="yummy vegan food">
-            
-              <div class="card-body">
-                <h5 class="card-title">Gemuese Sandwich</h5>
-                <p class="card-text">This is a very healthy vegan food. Ingredients mostly originate from the West, even though we pretend it's authentic Vietnamese dish</p>
-                <a href="green bowl prj/collection.html" class="btn btn-primary">See More</a>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img src="images/veganfood.jpg" class="card-img-top" alt="yummy vegan food">
-            
-              <div class="card-body">
-                <h5 class="card-title">Gemuese Sandwich</h5>
-                <p class="card-text">This is a very healthy vegan food. Ingredients mostly originate from the West, even though we pretend it's authentic Vietnamese dish</p>
-                <a href="green bowl prj/collection.html" class="btn btn-primary">See More</a>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>

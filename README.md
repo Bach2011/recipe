@@ -19,6 +19,3 @@ use ```pip install -r requirements.txt``` to install packages
 # commands
 ```python manage.py runserver``` to start website
 Once it is started go here: ```127.0.0.1:8000```
-
-# Images not loading?
-Add images to ```templates/recipe/images```

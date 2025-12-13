@@ -9,7 +9,15 @@ import markdown2
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def index(request):
-    return render(request, "recipe/landingpage.html")
+    recipes_list = []
+    try:
+        for i in range(1,3):
+            recipes_list.append(Recipe.objects.get(id=i))
+    except Recipe.DoesNotExist:
+        pass
+    return render(request, "recipe/landingpage.html", {
+        "recipes":recipes_list
+    })
 def recipes(request):
     if(request.method == "POST"):
         if(request.POST.get("list") != ""):
@@ -27,11 +35,12 @@ def recipes(request):
                 .filter(match_count__gt=0)
                 .order_by('-match_count')
             )
-            return render(request, "recipe/recipes.html", {
-                "recipes":recipes
+            return render(request, "recipe/collection.html", {
+                "recoms":recipes,
+                "search":request.POST.get("list")
             })
         else:
-            return render(request, "recipe/recipes.html", {
+            return render(request, "recipe/collection.html", {
                 "recipes":Recipe.objects.all()
             })
     elif(request.method == "GET"):
@@ -114,7 +123,10 @@ def collection(request):
             rec = Recipe.objects.get(name=search)
             return HttpResponseRedirect(reverse("recipe", args=[rec.id]))
         except Recipe.DoesNotExist:
-            return render(request, "recipe/collection.html", {"message":"Recipe does not exist"})
+            recom_list = []
+            for reci in Recipe.objects.all():
+                if search.lower() in reci.name.lower(): recom_list.append(reci)
+            return render(request, "recipe/collection.html", {"recoms":recom_list, "search":search})
     else:
         lines = [[]]
         cnt = 0;
