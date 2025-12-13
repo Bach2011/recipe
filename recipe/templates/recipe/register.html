@@ -4,6 +4,7 @@
         <h1 class="auth-title">Create your Account</h1>
         <div class="auth-page">
             <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
                 <div class="mb-3">
                     <label for="inputusername" class="form-label">Username</label>
                     <input type="text" class="form-control" id="inputusername" name="username">
