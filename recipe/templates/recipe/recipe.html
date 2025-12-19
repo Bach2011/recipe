@@ -1,6 +1,5 @@
 {% extends 'recipe/layout.html' %}
 {% block body %}
-{% block title %}{{recipe.name}}{% endblock %}
 <div class="recipe-post">
       <!--Section: Basic Info-->
       <div class="recipe-nav">
@@ -34,10 +33,10 @@
                 {% if not saved %}
                 <form action="{% url 'recipe' recipe.id %}" method="POST">
                     {% csrf_token %}
-                    <button type="submit">Like this recipe</button>
+                    <button type="submit" class="btn btn-login btn-primary">Like this recipe</button>
                 </form>
                 {% else %}
-                <button type="button" disabled>Liked</button>
+                <button type="submit" class="btn btn-login btn-primary" disabled>Liked</button>
                 {% endif %}
             </div>
           
@@ -62,7 +61,7 @@
               <div id="instructions">
                 <h4>Instructions</h4>
                 <ol>
-                    {{recipe.instruction}}
+                    {{instruction | safe}}
                 </ol>
               </div>
               

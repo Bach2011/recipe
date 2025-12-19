@@ -7,8 +7,8 @@
             <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label for="inputEmail" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="inputEmail" name="email">
+                    <label for="inputEmail" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="inputEmail" name="username">
                 </div>
 
                 <div class="mb-3">

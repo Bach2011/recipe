@@ -53,11 +53,17 @@ def recipe(request, id):
         user = request.user
         user.saved.add(cur_recipe)
         user.save()
-    saved = cur_recipe in request.user.saved.all()
+    if not request.user.is_authenticated:
+        saved = True
+    else:
+        saved = cur_recipe in request.user.saved.all()
+    instruction = cur_recipe.instruction
+    f = markdown2.markdown(instruction)
     return render(request, "recipe/recipe.html", {
         "recipe" : cur_recipe,
         "ingredients":cur_recipe.ingridents.all(),
-        "saved" : saved
+        "saved" : saved,
+        "instruction":f
     })
 
 
