@@ -31,12 +31,15 @@
             </nav>
             <div class="saved-recipe pt-5">
                 {% if not saved %}
-                <form action="{% url 'recipe' recipe.id %}" method="POST">
+                <form action="{% url 'recipe' recipe.id %}" class="nav-form" method="POST">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-login btn-primary">Like this recipe</button>
+                    <button type="submit" class="btn login-btn btn-primary">Like this recipe</button>
                 </form>
                 {% else %}
-                <button type="submit" class="btn btn-login btn-primary" disabled>Liked</button>
+                <form action="{% url 'recipe' recipe.id %}" class="nav-form" method="POST">
+                    {% csrf_token %}
+                    <button type="button" class="btn login-btn btn-primary">Liked</button>
+                </form>
                 {% endif %}
             </div>
           

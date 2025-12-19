@@ -6,6 +6,9 @@ class Ingridient(models.Model):
     name = models.CharField()
     def __str__(self):
         return f'{self.name}'
+    class Meta:
+        # Order by 'created_date' in descending order by default
+        ordering = ['name']
 class Recipe(models.Model):
     name = models.CharField()
     picture = models.ImageField(upload_to="products/")
